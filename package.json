@@ -14,7 +14,7 @@
   },
   "keywords": [
     "triplegolf",
-    "liveresults"
+    "livescores"
   ],
   "author": "Mikko Välimäki",
   "license": "MIT",
@@ -38,7 +38,6 @@
     "gh-pages": "^0.11.0",
     "html-webpack-plugin": "^2.16.0",
     "html-webpack-template": "^4.0.0",
-    "isparta-instrumenter-loader": "^1.0.0",
     "karma": "^0.13.22",
     "karma-coverage": "^0.5.5",
     "karma-mocha": "^0.2.2",
@@ -61,10 +60,12 @@
     "webpack-merge": "^0.12.0"
   },
   "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
     "immutable": "^3.8.1",
     "node-uuid": "^1.4.7",
+    "radium": "^0.18.1",
     "react": "^15.0.1",
-    "react-addons-update": "^15.0.1",
     "react-burger-menu": "^1.10.2",
     "react-dom": "^15.0.1",
     "react-redux": "^4.4.5",
