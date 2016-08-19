@@ -7,9 +7,9 @@ import PlayerBox from '../components/PlayerBox.jsx';
 class SelectablePlayer extends React.Component {
 
   render() {
-    const {player, sport, ...props} = this.props;
+    const {player, sportName, ...props} = this.props;
     const playerId = player.get('id');
-    const checkboxCheck = player.get('sports').get(sport) !== undefined ? player.get('sports').get(sport).get('preSelectedToGroup') : false;
+    const checkboxCheck = player.get('sports').get(sportName) !== undefined ? player.get('sports').get(sportName).get('preSelectedToGroup') : false;
     const playerBoxStyle = {
       padding: 15,
       margin: 5,
@@ -32,7 +32,7 @@ class SelectablePlayer extends React.Component {
           <div style={checkboxStyle}>
             <input style={{height: '30px',width: '30px'}} type="checkbox"
               checked={checkboxCheck}
-              onChange={() => props.switchGroupPreselection(playerId, sport, !checkboxCheck)}/>
+              onChange={() => props.switchGroupPreselection(playerId, sportName, !checkboxCheck)}/>
           </div>
       </div>
     );

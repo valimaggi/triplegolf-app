@@ -5,7 +5,6 @@ const initialState = List();
 
 export default function players(state = initialState, action) {
   let playerIndex;
-  let sportIndex;
 
   switch (action.type) {
     case types.CREATE_PLAYER:
@@ -35,6 +34,14 @@ export default function players(state = initialState, action) {
       }
 
       return state.setIn([playerIndex, 'sports', action.player.sport, 'preSelectedToGroup'], action.player.preSelectedToGroup);
+    case types.CREATE_HOLES:
+      playerIndex = state.findIndex(player => player.get('id') === action.player.id);
+
+      if(playerIndex < 0) {
+        return state;
+      }
+
+      return state.setIn([playerIndex, 'sports', action.player.sport, 'holes'], action.player.holes);
     default:
       return state;
   }

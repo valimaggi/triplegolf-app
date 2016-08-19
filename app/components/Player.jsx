@@ -26,11 +26,6 @@ class Player extends React.Component {
           <div className="player-shots">
             {player.get('shots')}
           </div>
-
-          <div>
-            <button onClick={() => props.updatePlayer({id: playerId, shots: playerShots+1})}>+</button>
-            <button onClick={() => props.updatePlayer({id: playerId, shots: playerShots-1})}>-</button>
-          </div>
         </div>
       </div>
     );

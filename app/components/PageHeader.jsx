@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default ({name}) => {
+export default ({header}) => {
   return (
     <div style={{fontSize: 50,margin: 10}}>
-      {name}
+      {header}
     </div>
   );
 }

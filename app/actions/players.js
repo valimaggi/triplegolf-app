@@ -38,3 +38,15 @@ export function switchGroupPreselection(playerId, sport, preSelectedToGroup) {
     }
   }
 }
+
+export const CREATE_HOLES = 'CREATE_HOLES';
+export function createHoles(playerId, sport, holes) {
+  return {
+    type: CREATE_HOLES,
+    player: {
+      id: playerId,
+      sport: sport,
+      holes: holes
+    }
+  }
+}

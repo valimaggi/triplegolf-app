@@ -18,3 +18,12 @@ export function deleteGroup(id) {
     id
   };
 };
+
+export const CHANGE_CURRENT_HOLE = 'CHANGE_CURRENT_HOLE';
+export function changeCurrentHole(groupId, newHoleIndex) {
+  return {
+    type: CHANGE_CURRENT_HOLE,
+    id: groupId,
+    newHoleIndex: newHoleIndex
+  };
+};

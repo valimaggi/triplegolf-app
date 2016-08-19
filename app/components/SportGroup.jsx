@@ -5,12 +5,12 @@ import {connect} from 'react-redux';
 import PlayerBox from './PlayerBox.jsx';
 import * as GroupActions from '../actions/groups';
 
-class Group extends React.Component {
+class SportGroup extends React.Component {
 
   render() {
     const {group, players, ...props} = this.props;
     const groupPlayers = players.filter(player => {
-      return group.get('playerIds').findIndex(id => id === player.get('id')) >= 0
+      return group.get('playerIds').findIndex(id => id === player.get('id')) >= 0;
     });
 
     return (
@@ -46,4 +46,4 @@ export default compose(
   connect((state, props) => ({}), {
     ...GroupActions
   })
-)(Group);
+)(SportGroup);
