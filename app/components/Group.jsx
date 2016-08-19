@@ -13,9 +13,9 @@ class Group extends React.Component {
     const groupPlayers = players.filter(player => {
       return group.get('playerIds').findIndex(id => id === player.get('id')) >= 0
     });
-    const sportHoles = holes[group.get('sport').get('name')];
-    const holeNumbers = Object.keys(sportHoles);
-    const maxHoleIndex = holeNumbers.length()-1;
+    const holeNumberParMap = holes[group.get('sport').get('name')];
+    const holeNumbers = Object.keys(holeNumberParMap);
+    const maxHoleIndex = holeNumbers.length-1;
     const holeIndex = group.get('currentHoleIndex');
     const playerBoxStyle = {
       padding: 15,
@@ -41,7 +41,7 @@ class Group extends React.Component {
       <div>
         <h2>Group</h2>
         <h3>{group.get('sport').get('header')}</h3>
-        <h4>Hole {holeNumbers[holeIndex]} - Par {sportHoles[holeIndex+1]}</h4>
+        <h4>Hole {holeNumbers[holeIndex]} - Par {holeNumberParMap[holeIndex+1]}</h4>
         <div>
           <span style={prevStyle} onClick={this.changeHole.bind(this, group, -1, maxHoleIndex)}>Prev</span> -
           <span style={nextStyle} onClick={this.changeHole.bind(this, group, 1, maxHoleIndex)}>Next</span>
@@ -66,9 +66,8 @@ class Group extends React.Component {
 
   changeHole(group, holeIndexIncrement, maxHoleIndex, e) {
     e.stopPropagation();
-
     const newHoleIndex = group.get('currentHoleIndex') + holeIndexIncrement;
-    if(holeIndexIncrement >= 0 && holeIndexIncrement <= maxHoleIndex) {
+    if(newHoleIndex >= 0 && newHoleIndex <= maxHoleIndex) {
       this.props.changeCurrentHole(group.get('id'), newHoleIndex);
     }
   }
