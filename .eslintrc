@@ -1,22 +1,21 @@
 {
-    "env": {
-        "browser": true,
-        "node": true,
-        "es6": true
-    },
-
-    "parserOptions": {
-      "ecmaVersion": 6,
-      "sourceType": "module",
-      "ecmaFeatures": {
-          "jsx": true,
-          "experimentalObjectRestSpread": true
-      }
-    },
-
-    "plugins": [
-        "react"
-    ],
-
-    #"extends": "eslint-config-airbnb"
+  'extends': 'airbnb',
+  'parser': 'babel-eslint',
+  'env': {
+    'node': true,
+    'es6': true,
+    'mocha': true
+  },
+  'rules': {
+    'comma-dangle': ['error','only-multiline'],
+    'import/no-extraneous-dependencies': ['error', {"devDependencies": true, "optionalDependencies": false, "peerDependencies": false}],
+    'prefer-template': 'off',
+    'no-param-reassign': ['error', { "props": false }],
+    'no-underscore-dangle': 'off',
+    'object-shorthand': 'off',
+    'linebreak-style': 'off',
+    'new-cap': ["error", { "capIsNew": false }],
+    'global-require': 'off',
+    'max-len': ["error", 170]
+  }
 }
