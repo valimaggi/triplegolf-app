@@ -1,10 +1,17 @@
-import React from 'react';
-import Player from './Player.jsx';
+import React, { PropTypes } from 'react';
+import { List } from 'immutable';
+import Player from './Player';
 
-export default ({players}) => {
-  return (
-    <div className="players">{players.map((player) =>
+const Players = ({ players }) =>
+  <div className="players">
+    {players.map(player =>
       <Player className="player" key={player.get('id')} player={player} />
-    )}</div>
-  );
-}
+    )}
+  </div>;
+
+
+Players.propTypes = {
+  players: PropTypes.instanceOf(List)
+};
+
+export default Players;

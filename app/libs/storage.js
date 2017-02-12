@@ -1,13 +1,12 @@
 export default {
-  get: function(k) {
+  get: (k) => {
     try {
-      return JSON.parse(localStorage.getItem(k));
-    }
-    catch(e) {
+      return JSON.parse(localStorage.getItem(k)); // eslint-disable-line
+    } catch (e) {
       return null;
     }
   },
-  set: function(k, v) {
-    localStorage.setItem(k, JSON.stringify(v));
+  set: (k, v) => {
+    localStorage.setItem(k, JSON.stringify(v)); // eslint-disable-line
   }
 };

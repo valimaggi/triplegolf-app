@@ -1,4 +1,3 @@
-'use strict';
 const path = require('path');
 const HtmlwebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
@@ -16,7 +15,8 @@ const PATHS = {
   test: path.join(__dirname, 'tests')
 };
 
-const production = process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'heroku' ;
+// eslint-disable-next-line
+const production = process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'heroku';
 
 const ENV = {
   host: process.env.HOST || 'localhost',
@@ -55,7 +55,7 @@ const common = {
   ]
 };
 
-if(TARGET === 'nodemon') {
+if (TARGET === 'nodemon') {
   module.exports = merge(common, {
     entry: {
       app: [
@@ -85,7 +85,7 @@ if(TARGET === 'nodemon') {
   });
 }
 
-if(TARGET === 'start' || !TARGET) {
+if (TARGET === 'start' || !TARGET) {
   module.exports = merge(common, {
     entry: {
       style: PATHS.style
@@ -121,15 +121,15 @@ if(TARGET === 'start' || !TARGET) {
   });
 }
 
-if(TARGET === 'build' || TARGET === 'stats') {
+if (TARGET === 'build' || TARGET === 'stats') {
   module.exports = merge(common, {
     entry: {
-      vendor: Object.keys(pkg.dependencies).filter(function(v) {
+      vendor: Object.keys(pkg.dependencies).filter(v =>
         // Exclude alt-utils as it won't work with this setup
         // due to the way the package has been designed
         // (no package.json main).
-        return v !== 'alt-utils';
-      }),
+        v !== 'alt-utils'
+      ),
       style: PATHS.style
     },
     output: {
@@ -168,12 +168,12 @@ if(TARGET === 'build' || TARGET === 'stats') {
   });
 }
 
-if(TARGET === 'test' || TARGET === 'tdd') {
+if (TARGET === 'test' || TARGET === 'tdd') {
   module.exports = merge(common, {
     devtool: 'inline-source-map',
     resolve: {
       alias: {
-        'app': PATHS.app
+        app: PATHS.app
       }
     },
     module: {

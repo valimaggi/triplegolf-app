@@ -1,10 +1,9 @@
-import {Map, List, fromJS} from 'immutable';
+import { Map, List, fromJS } from 'immutable';
 import * as types from '../actions/groups';
 
 const initialState = List();
 
 export default function groups(state = initialState, action) {
-
   let groupIndex;
   switch (action.type) {
 
@@ -13,7 +12,7 @@ export default function groups(state = initialState, action) {
     case types.DELETE_GROUP:
       groupIndex = state.findIndex(group => group.get('id') === action.id);
 
-      if(groupIndex < 0) {
+      if (groupIndex < 0) {
         return state;
       }
 
@@ -22,7 +21,7 @@ export default function groups(state = initialState, action) {
     case types.CHANGE_CURRENT_HOLE:
       groupIndex = state.findIndex(group => group.get('id') === action.id);
 
-      if(groupIndex < 0) {
+      if (groupIndex < 0) {
         return state;
       }
 

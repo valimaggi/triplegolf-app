@@ -1,4 +1,4 @@
-import {List, Map} from 'immutable';
+import { List, Map } from 'immutable';
 import * as types from '../actions/players';
 
 const initialState = List();

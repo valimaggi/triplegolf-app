@@ -29,11 +29,11 @@
     "babel-preset-survivejs-kanban": "^0.3.3",
     "clean-webpack-plugin": "^0.1.8",
     "css-loader": "^0.23.1",
-    "eslint": "^3.2.2",
-    "eslint-config-airbnb": "^10.0.0",
-    "eslint-plugin-import": "^1.12.0",
-    "eslint-plugin-jsx-a11y": "^2.0.1",
-    "eslint-plugin-react": "^6.0.0",
+    "eslint": "3.7.1",
+    "eslint-config-airbnb": "12.0.0",
+    "eslint-plugin-import": "1.16.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.4.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "gh-pages": "^0.11.0",
     "html-webpack-plugin": "^2.16.0",
@@ -60,16 +60,16 @@
     "webpack-merge": "^0.12.0"
   },
   "dependencies": {
-    "body-parser": "^1.15.2",
-    "express": "^4.14.0",
     "immutable": "^3.8.1",
     "node-uuid": "^1.4.7",
     "radium": "^0.18.1",
     "react": "^15.0.1",
+    "react-bootstrap": "^0.30.7",
     "react-burger-menu": "^1.10.2",
     "react-dom": "^15.0.1",
     "react-redux": "^4.4.5",
     "react-router": "^2.6.1",
-    "redux": "^3.5.1"
+    "redux": "^3.5.1",
+    "redux-immutable": "^3.0.11"
   }
 }

@@ -1,14 +1,14 @@
-import React from 'react';
-import {Link} from 'react-router';
-import {slide as Menu} from 'react-burger-menu';
+import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
+import { slide as Menu } from 'react-burger-menu';
 import Radium from 'radium';
 
-let RadiumLink = Radium(Link);
+const RadiumLink = Radium(Link);
 const activeLinkStyle = {
   color: '#90EE90',
   display: 'block',
   outline: 'none'
-}
+};
 const Nav = () => (
   <div>
     <Menu>
@@ -18,20 +18,18 @@ const Nav = () => (
       <RadiumLink className="menu-item" activeStyle={activeLinkStyle} to="/minigolf">Minigolf</RadiumLink>
     </Menu>
   </div>
-)
+);
 
-class App extends React.Component {
+const App = ({ children }) =>
+  <div>
+    <Nav />
+    <div style={{ margin: 'auto', width: '60%' }}>
+      {children}
+    </div>
+  </div>;
 
-  render() {
-    return (
-      <div>
-        <Nav/>
-        <div style={{margin: 'auto', width: '60%'}}>
-          {this.props.children}
-        </div>
-      </div>
-    );
-  }
-}
+App.propTypes = {
+  children: PropTypes.node.isRequired
+};
 
 export default App;

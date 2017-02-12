@@ -9,7 +9,7 @@ export function createGroup(group) {
       ...group
     }
   };
-};
+}
 
 export const DELETE_GROUP = 'DELETE_GROUP';
 export function deleteGroup(id) {
@@ -17,7 +17,7 @@ export function deleteGroup(id) {
     type: DELETE_GROUP,
     id
   };
-};
+}
 
 export const CHANGE_CURRENT_HOLE = 'CHANGE_CURRENT_HOLE';
 export function changeCurrentHole(groupId, newHoleIndex) {
@@ -26,4 +26,4 @@ export function changeCurrentHole(groupId, newHoleIndex) {
     id: groupId,
     newHoleIndex: newHoleIndex
   };
-};
+}

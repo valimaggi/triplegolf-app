@@ -1,4 +1,4 @@
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux-immutable';
 import players from './players';
 import groups from './groups';
 

@@ -29,4 +29,4 @@ export default {
     8: 1,
     9: 1
   }
-}
+};
