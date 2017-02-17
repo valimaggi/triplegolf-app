@@ -9,7 +9,7 @@ export function createPlayer(player) {
       ...player
     }
   };
-};
+}
 
 export const UPDATE_PLAYER = 'UPDATE_PLAYER';
 export function updatePlayer(updatedPlayer) {
@@ -17,7 +17,7 @@ export function updatePlayer(updatedPlayer) {
     type: UPDATE_PLAYER,
     ...updatedPlayer
   };
-};
+}
 
 export const DELETE_PLAYER = 'DELETE_PLAYER';
 export function deletePlayer(id) {
@@ -25,7 +25,7 @@ export function deletePlayer(id) {
     type: DELETE_PLAYER,
     id
   };
-};
+}
 
 export const SWITCH_GROUP_PRESELECTION = 'SWITCH_GROUP_PRESELECTION';
 export function switchGroupPreselection(playerId, sport, preSelectedToGroup) {
@@ -36,7 +36,7 @@ export function switchGroupPreselection(playerId, sport, preSelectedToGroup) {
       sport: sport,
       preSelectedToGroup: preSelectedToGroup
     }
-  }
+  };
 }
 
 export const CREATE_HOLES = 'CREATE_HOLES';
@@ -48,5 +48,5 @@ export function createHoles(playerId, sport, holes) {
       sport: sport,
       holes: holes
     }
-  }
+  };
 }
