@@ -11,7 +11,7 @@ const TARGET = process.env.npm_lifecycle_event;
 const PATHS = {
   app: path.join(__dirname, 'app'),
   build: path.join(__dirname, 'build'),
-  style: path.join(__dirname, 'app/main.css'),
+  style: path.join(__dirname, 'app/styles/main.scss'),
   test: path.join(__dirname, 'tests')
 };
 
@@ -42,7 +42,10 @@ const common = {
         test: /\.jsx?$/,
         loaders: ['babel?cacheDirectory'],
         include: PATHS.app
-      }
+      },
+      { test: /\.gif$/, loader: 'url-loader?mimetype=image/png' },
+      { test: /\.woff(2)?(\?v=[0-9].[0-9].[0-9])?$/, loader: 'url-loader?mimetype=application/font-woff' },
+      { test: /\.(ttf|eot|svg)(\?v=[0-9].[0-9].[0-9])?$/, loader: 'file-loader?name=[name].[ext]' },
     ]
   },
   plugins: [
@@ -76,6 +79,11 @@ if (TARGET === 'nodemon') {
           test: /\.css$/,
           loaders: ['style', 'css'],
           include: PATHS.app
+        },
+        {
+          test: /\.scss$/,
+          loaders: ['style', 'css', 'sass'],
+          use: ['style-loader', 'css-loader', 'sass-loader'],
         }
       ]
     },
@@ -112,6 +120,11 @@ if (TARGET === 'start' || !TARGET) {
           test: /\.css$/,
           loaders: ['style', 'css'],
           include: PATHS.app
+        },
+        {
+          test: /\.scss$/,
+          loaders: ['style', 'css', 'sass'],
+          use: ['style-loader', 'css-loader', 'sass-loader'],
         }
       ]
     },
@@ -144,6 +157,11 @@ if (TARGET === 'build' || TARGET === 'stats') {
           test: /\.css$/,
           loader: ExtractTextPlugin.extract('style', 'css'),
           include: PATHS.app
+        },
+        {
+          test: /\.scss$/,
+          loaders: ['style', 'css', 'sass'],
+          use: ['style-loader', 'css-loader', 'sass-loader'],
         }
       ]
     },
