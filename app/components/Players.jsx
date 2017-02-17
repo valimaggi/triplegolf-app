@@ -1,13 +1,18 @@
 import React, { PropTypes } from 'react';
 import { List } from 'immutable';
+import { Row, Col, ListGroup } from 'react-bootstrap';
 import Player from './Player';
 
-const Players = ({ players }) =>
-  <div className="players">
-    {players.map(player =>
-      <Player className="player" key={player.get('id')} player={player} />
-    )}
-  </div>;
+const Players = ({ players, ...props }) =>
+  <Row>
+    <Col md={6}>
+      <ListGroup>
+        {players.map(player =>
+          <Player key={player.get('id')} player={player} {...props} />
+        )}
+      </ListGroup>;
+    </Col>
+  </Row>;
 
 
 Players.propTypes = {

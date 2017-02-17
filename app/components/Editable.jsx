@@ -1,48 +1,50 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 
-export default class Editable extends React.Component {
-  render() {
-    const {value, onEdit, onValueClick, editing, ...props} = this.props;
+class Editable extends Component {
 
-    return (
-      <div {...props}>
-        {editing ? this.renderEdit() : this.renderValue()}
-      </div>
-    );
-  }
-  renderEdit = () => {
-    return <input type="text"
-      ref={
-        (e) => e ? e.selectionStart = this.props.value.length : null
-      }
-      autoFocus={true}
-      defaultValue={this.props.value}
-      onBlur={this.finishEdit}
-      onKeyPress={this.checkEnter} />;
-  };
-  renderValue = () => {
-    const onDelete = this.props.onDelete;
-
-    return (
-      <div onClick={this.props.onValueClick}>
-        <span className="value">{this.props.value}</span>
-        {onDelete ? this.renderDelete() : null }
-      </div>
-    );
-  };
-  renderDelete = () => {
-    return <button className="delete" onClick={this.props.onDelete}>x</button>;
-  };
-  checkEnter = (e) => {
-    if(e.key === 'Enter') {
-      this.finishEdit(e);
-    }
-  };
-  finishEdit = (e) => {
+  finishEdit(e, onEdit) {
     const value = e.target.value;
 
-    if(this.props.onEdit && value.trim()) {
-      this.props.onEdit(value);
+    if (onEdit && value.trim()) {
+      onEdit(value);
     }
-  };
+    return true;
+  }
+
+  checkEnter(e, onEdit) {
+    if (e.key === 'Enter') {
+      this.finishEdit(e, onEdit);
+    }
+    return true;
+  }
+
+  renderEdit() {
+    return (
+      <input
+        type="text"
+        ref={e => (e ? e.selectionStart = this.props.value.length : null)}
+        autoFocus
+        defaultValue={this.props.value}
+        onBlur={e => this.finishEdit(e, this.props.onEdit)}
+        onKeyPress={e => this.checkEnter(e, this.props.onEdit)}
+      />);
+  }
+
+  render() {
+    const { editing } = this.props;
+
+    return (
+      <h4 className="list-group-item-heading">
+        {editing ? this.renderEdit() : this.props.value}
+      </h4>
+    );
+  }
 }
+
+Editable.propTypes = {
+  value: PropTypes.string.isRequired,
+  onEdit: PropTypes.func.isRequired,
+  editing: PropTypes.bool.isRequired,
+};
+
+export default Editable;

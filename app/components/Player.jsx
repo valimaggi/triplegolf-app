@@ -1,47 +1,53 @@
-import React from 'react';
-import {compose} from 'redux';
-import {connect} from 'react-redux';
-import Editable from './Editable.jsx';
-import * as playerActions from '../actions/players';
+import React, { Component, PropTypes } from 'react';
+import Immutable from 'immutable';
+import { Row, Col, ListGroupItem, Button, Glyphicon } from 'react-bootstrap';
 
-class Player extends React.Component {
+import Editable from './Editable';
+
+class Player extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { editing: false };
+  }
+
+  toggleEditing(editing) {
+    this.setState(() => ({ editing }));
+  }
 
   render() {
-    const {player, ...props} = this.props;
-    const playerId = player.get('id');
+    const { player, updatePlayer, deletePlayer } = this.props;
+    const id = player.get('id');
     const playerShots = player.get('shots');
 
     return (
-      <div {...props}>
-        <div className="player-header"
-          onClick={() => props.updatePlayer({id: playerId, editing: true})}>
-          <Editable className="player-name" editing={player.get('editing')}
-            value={player.get('name')}
-            onEdit={name => props.updatePlayer({id: playerId, name, editing: false})} />
-          <div className="player-delete">
-            <button onClick={this.deletePlayer.bind(this, player)}>x</button>
-          </div>
-        </div>
-        <div>
-          <div className="player-shots">
-            {player.get('shots')}
-          </div>
-        </div>
-      </div>
+      <ListGroupItem>
+        <Row>
+          <Col md={10} onClick={() => this.toggleEditing(true)}>
+            <Editable
+              editing={this.state.editing}
+              value={player.get('name')}
+              onEdit={(name) => {
+                updatePlayer({ id, name });
+                this.toggleEditing(false);
+              }}
+            />
+          </Col>
+          <Col md={2}>
+            <Button bsSize="xsmall">
+              <Glyphicon glyph="remove" onClick={() => deletePlayer(id)} />
+            </Button>
+          </Col>
+        </Row>
+        <Row><Col md={12}>Shots: {playerShots}</Col></Row>
+      </ListGroupItem>
     );
   }
-  deletePlayer(player, e) {
-    e.stopPropagation();
-    const playerId = player.get('id');
-    this.props.deletePlayer(playerId);
-  }
-
 }
 
-export default compose(
-  // If you want to memoize this (more performant),
-  // use https://www.npmjs.com/package/reselect
-  connect((state, props) => ({}), {
-    ...playerActions
-  })
-)(Player);
+Player.propTypes = {
+  player: PropTypes.instanceOf(Immutable.Map).isRequired,
+  updatePlayer: PropTypes.func.isRequired,
+  deletePlayer: PropTypes.func.isRequired
+};
+
+export default Player;

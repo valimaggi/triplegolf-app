@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { slide as Menu } from 'react-burger-menu';
 import Radium from 'radium';
+import { Row, Col } from 'react-bootstrap';
 
 const RadiumLink = Radium(Link);
 const activeLinkStyle = {
@@ -24,7 +25,11 @@ const App = ({ children }) =>
   <div>
     <Nav />
     <div style={{ margin: 'auto', width: '60%' }}>
-      {children}
+      <Row>
+        <Col md={12}>
+          {children}
+        </Col>
+      </Row>
     </div>
   </div>;
 

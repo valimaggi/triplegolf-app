@@ -3,6 +3,6 @@ import players from './players';
 import groups from './groups';
 
 export default combineReducers({
-  players,
-  groups
+  playersData: players,
+  groupsData: groups
 });
