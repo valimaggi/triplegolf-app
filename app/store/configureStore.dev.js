@@ -6,13 +6,10 @@ import DevTools from '../containers/DevTools';
 function getDebugSessionKey() {
   const matches = window.location.href.match(/[?&]debug_session=([^&]+)\b/); // eslint-disable-line
 
-  return (matches && matches.length > 0) ? matches[1] : null;
+  return matches && matches.length > 0 ? matches[1] : null;
 }
 
-const createStoreWithMiddleware = compose(
-  DevTools.instrument(),
-  persistState(getDebugSessionKey())
-)(createStore);
+const createStoreWithMiddleware = compose(DevTools.instrument(), persistState(getDebugSessionKey()))(createStore);
 
 export default function configureStore(initialState) {
   const store = createStoreWithMiddleware(rootReducer, initialState);
