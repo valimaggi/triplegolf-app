@@ -26,8 +26,8 @@ store.subscribe(() => {
     storage.set(APP_STORAGE, serialize(store.getState()));
   }
 });
-
+const isProduction = process.env.NODE_ENV === 'production';
 ReactDOM.render(
-  <Root store={store} />,
+  <Root store={store} isProduction={isProduction} />,
   document.getElementById('app'), // eslint-disable-line
 );
