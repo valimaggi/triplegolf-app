@@ -22,20 +22,30 @@ class Player extends Component {
     return (
       <ListGroupItem>
         <Row>
-          <Col md={10} onClick={() => this.toggleEditing(true)}>
+          <Col
+            md={10}
+            onClick={() => {
+              if (updatePlayer) {
+                this.toggleEditing(true);
+              }
+            }}
+          >
             <Editable
               editing={this.state.editing}
               value={player.get('name')}
               onEdit={(name) => {
-                updatePlayer({ id, name });
-                this.toggleEditing(false);
+                if (updatePlayer) {
+                  updatePlayer({ id, name });
+                  this.toggleEditing(false);
+                }
               }}
             />
           </Col>
           <Col md={2}>
-            <Button bsSize="xsmall">
-              <Glyphicon glyph="remove" onClick={() => deletePlayer(id)} />
-            </Button>
+            {deletePlayer &&
+              <Button bsSize="xsmall">
+                <Glyphicon glyph="remove" onClick={() => deletePlayer(id)} />
+              </Button>}
           </Col>
         </Row>
         <Row><Col md={12}>Shots: {playerShots}</Col></Row>
@@ -46,8 +56,8 @@ class Player extends Component {
 
 Player.propTypes = {
   player: PropTypes.instanceOf(Immutable.Map).isRequired,
-  updatePlayer: PropTypes.func.isRequired,
-  deletePlayer: PropTypes.func.isRequired
+  updatePlayer: PropTypes.func,
+  deletePlayer: PropTypes.func,
 };
 
 export default Player;

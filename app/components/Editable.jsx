@@ -21,7 +21,6 @@ class Editable extends Component {
     return (
       <input
         type="text"
-        ref={e => (e ? (e.selectionStart = this.props.value.length) : null)}
         autoFocus
         defaultValue={this.props.value}
         onBlur={e => this.finishEdit(e, this.props.onEdit)}
@@ -43,7 +42,7 @@ class Editable extends Component {
 Editable.propTypes = {
   value: PropTypes.string.isRequired,
   onEdit: PropTypes.func.isRequired,
-  editing: PropTypes.bool.isRequired
+  editing: PropTypes.bool.isRequired,
 };
 
 export default Editable;
