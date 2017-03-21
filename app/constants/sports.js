@@ -1,14 +1,14 @@
 export default {
   GOLF: {
     name: 'golf',
-    header: 'Golf'
+    header: 'Golf',
   },
   DISCGOLF: {
     name: 'discgolf',
-    header: 'Discgolf'
+    header: 'Discgolf',
   },
   MINIGOLF: {
     name: 'minigolf',
-    header: 'Minigolf'
-  }
+    header: 'Minigolf',
+  },
 };

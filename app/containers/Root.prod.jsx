@@ -8,8 +8,7 @@ import App from './App';
 import Home from '../views/home/ConnectedHome';
 import { GolfSport, DiscgolfSport, MinigolfSport } from './SportWrappers';
 
-
-const Root = ({ store }) =>
+const Root = ({ store }) => (
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={App}>
@@ -19,11 +18,11 @@ const Root = ({ store }) =>
         <Route path="minigolf" component={MinigolfSport} />
       </Route>
     </Router>
-  </Provider>;
-
+  </Provider>
+);
 
 Root.propTypes = {
-  store: PropTypes.object.isRequired
+  store: PropTypes.object.isRequired, // eslint-disable-line
 };
 
 export default Root;

@@ -1,13 +1,9 @@
 import { connect } from 'react-redux';
 import Home from './Home';
-import {
-  createPlayer as createPlayerAction,
-  updatePlayer as updatePlayerAction,
-  deletePlayer as deletePlayerAction
-} from '../../actions/players';
+import { createPlayer as createPlayerAction, updatePlayer as updatePlayerAction, deletePlayer as deletePlayerAction } from '../../actions/players';
 
 const mapStateToProps = state => ({
-  players: state.get('playersData')
+  players: state.get('playersData'),
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -19,10 +15,7 @@ const mapDispatchToProps = dispatch => ({
   },
   deletePlayer(id) {
     dispatch(deletePlayerAction(id));
-  }
+  },
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

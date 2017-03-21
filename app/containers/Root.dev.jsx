@@ -7,7 +7,7 @@ import Home from '../views/home/ConnectedHome';
 import Group from '../components/Group';
 import { GolfSport, DiscgolfSport, MinigolfSport } from './SportWrappers';
 
-const Root = ({ store }) =>
+const Root = ({ store }) => (
   <Provider store={store}>
     <div>
       <Router history={browserHistory}>
@@ -21,10 +21,11 @@ const Root = ({ store }) =>
       </Router>
       <DevTools />
     </div>
-  </Provider>;
+  </Provider>
+);
 
 Root.propTypes = {
-  store: PropTypes.object.isRequired // eslint-disable-line
+  store: PropTypes.object.isRequired, // eslint-disable-line
 };
 
 export default Root;

@@ -4,5 +4,5 @@ import groups from './groups';
 
 export default combineReducers({
   playersData: players,
-  groupsData: groups
+  groupsData: groups,
 });

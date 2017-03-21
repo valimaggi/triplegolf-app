@@ -14,24 +14,47 @@ const Nav = () => (
   <div>
     <Menu>
       <RadiumLink className="menu-item" to="/">Home</RadiumLink>
-      <RadiumLink className="menu-item" activeStyle={activeLinkStyle} to="/golf">Golf</RadiumLink>
-      <RadiumLink className="menu-item" activeStyle={activeLinkStyle} to="/discgolf">Discgolf</RadiumLink>
-      <RadiumLink className="menu-item" activeStyle={activeLinkStyle} to="/minigolf">Minigolf</RadiumLink>
+      <RadiumLink
+        className="menu-item"
+        activeStyle={activeLinkStyle}
+        to="/golf"
+      >
+        Golf
+      </RadiumLink>
+      <RadiumLink
+        className="menu-item"
+        activeStyle={activeLinkStyle}
+        to="/discgolf"
+      >
+        Discgolf
+      </RadiumLink>
+      <RadiumLink
+        className="menu-item"
+        activeStyle={activeLinkStyle}
+        to="/minigolf"
+      >
+        Minigolf
+      </RadiumLink>
     </Menu>
   </div>
 );
 
-const App = ({ children }) =>
+const App = ({ children }) => (
   <div>
-    <Nav />
-    <div style={{ margin: 'auto', width: '60%' }}>
-      <Row>
-        <Col md={12}>
-          {children}
-        </Col>
-      </Row>
-    </div>
-  </div>;
+    <Row>
+      <Col md={2}>
+        <Nav />
+      </Col>
+      <Col md={10}>
+        <Row>
+          <Col md={12}>
+            {children}
+          </Col>
+        </Row>
+      </Col>
+    </Row>
+  </div>
+);
 
 App.propTypes = {
   children: PropTypes.node.isRequired

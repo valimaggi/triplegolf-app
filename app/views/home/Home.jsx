@@ -3,8 +3,7 @@ import { Row, Col, Button } from 'react-bootstrap';
 import { Map, List } from 'immutable';
 import Players from '../../components/Players';
 
-const Home = ({ players, createPlayer, updatePlayer, deletePlayer }) =>
-(
+const Home = ({ players, createPlayer, updatePlayer, deletePlayer }) => (
   <div>
     <Row>
       <Col md={6}>
@@ -31,7 +30,7 @@ Home.propTypes = {
   players: PropTypes.instanceOf(List).isRequired,
   createPlayer: PropTypes.func.isRequired,
   updatePlayer: PropTypes.func.isRequired,
-  deletePlayer: PropTypes.func.isRequired
+  deletePlayer: PropTypes.func.isRequired,
 };
 
 export default Home;

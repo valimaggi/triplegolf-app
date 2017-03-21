@@ -15,7 +15,8 @@ function serialize(state) {
 
 function deserialize(state) {
   const deserializedState = Map();
-  Object.keys(state || {}).forEach(k => deserializedState.set(k, fromJS(state[k]))); // eslint-disable-line
+  Object.keys(state || {}).forEach(k =>
+    deserializedState.set(k, fromJS(state[k])));
 
   return deserializedState;
 }
@@ -29,5 +30,5 @@ store.subscribe(() => {
 
 ReactDOM.render(
   <Root store={store} />,
-  document.getElementById('app') // eslint-disable-line
+  document.getElementById("app") // eslint-disable-line
 );
