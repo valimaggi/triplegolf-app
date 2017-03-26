@@ -4,12 +4,18 @@ import { Row, Col, Button } from 'react-bootstrap';
 import PlayerSelection from './PlayerSelection';
 import PageHeader from '../../components/PageHeader';
 import SportGroups from '../../components/SportGroups';
+import { togglePreSelectToGroup } from './stateChanges';
 
 class Sport extends Component {
   constructor(props) {
     super(props);
     this.state = { preSelectedPlayerIds: [] };
   }
+
+  togglePreSelectToGroup(playerId) {
+    this.setState(togglePreSelectToGroup(playerId));
+  }
+
   groupCreation(sport, players, e) {
     e.stopPropagation();
     const selectedPlayers = players.filter(
