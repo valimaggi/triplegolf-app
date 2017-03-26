@@ -1,10 +1,13 @@
 import React, { PropTypes } from 'react';
 
-const PageHeader = ({ header }) => (
-  <div style={{ fontSize: 50, margin: 10 }}>
-    {header && header.replace(/\b\w/g, l => l.toUpperCase())}
-  </div>
-);
+const PageHeader = ({ header }) => {
+  const style = { fontSize: 50 };
+  return (
+    <div style={style}>
+      {header && header.replace(/\b\w/g, l => l.toUpperCase())}
+    </div>
+  );
+};
 
 PageHeader.propTypes = {
   header: PropTypes.string,
