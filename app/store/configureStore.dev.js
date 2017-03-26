@@ -5,7 +5,6 @@ import DevTools from '../containers/DevTools';
 
 function getDebugSessionKey() {
   const matches = window.location.href.match(/[?&]debug_session=([^&]+)\b/); // eslint-disable-line
-
   return matches && matches.length > 0 ? matches[1] : null;
 }
 
