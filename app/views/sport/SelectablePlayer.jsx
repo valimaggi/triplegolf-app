@@ -3,9 +3,8 @@ import { Map } from 'immutable';
 import { Row, Col } from 'react-bootstrap';
 import Player from '../../components/Player';
 
-const SelectablePlayer = ({ player, sport }) => {
+const SelectablePlayer = ({ player, isSelected, togglePreSelectToGroup }) => {
   const playerId = player.get('id');
-  const checkboxStyle = { height: '30px', width: '30px' };
   return (
     <div>
       <Row>
@@ -13,12 +12,7 @@ const SelectablePlayer = ({ player, sport }) => {
           <Player player={player} />
         </Col>
         <Col xs={2} md={2}>
-          <input
-            style={checkboxStyle}
-            type="checkbox"
-            checked={this.state.preSelectedToGroup}
-            onChange={() => this.switchGroupPreselection(playerId, sport, !this.state.preSelectedToGroup)}
-          />
+          <input className="select-player-to-group-checkbox" type="checkbox" checked={isSelected} onChange={() => togglePreSelectToGroup(playerId)} />
         </Col>
       </Row>
     </div>
@@ -27,7 +21,8 @@ const SelectablePlayer = ({ player, sport }) => {
 
 SelectablePlayer.propTypes = {
   player: PropTypes.instanceOf(Map).isRequired,
-  sport: PropTypes.string.isRequired,
+  isSelected: PropTypes.bool.isRequired,
+  togglePreSelectToGroup: PropTypes.func,
 };
 
 export default SelectablePlayer;

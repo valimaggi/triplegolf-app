@@ -45,7 +45,11 @@ class Sport extends Component {
         </Row>
         <Row>
           <Col md={4}>
-            <PlayerSelection players={grouplessPlayers} sport={sport} />
+            <PlayerSelection
+              players={grouplessPlayers}
+              preSelectedPlayerIds={this.state.preSelectedPlayerIds}
+              togglePreSelectToGroup={playerId => this.togglePreSelectToGroup(playerId)}
+            />
           </Col>
           <Col md={6}>
             <Button onClick={e => this.groupCreation(sport, players, e)}>
