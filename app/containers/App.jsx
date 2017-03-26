@@ -30,10 +30,10 @@ const Nav = () => (
 const App = ({ children }) => (
   <div>
     <Row>
-      <Col md={2}>
+      <Col xs={2} md={2}>
         <Nav />
       </Col>
-      <Col md={10}>
+      <Col xs={10} md={10}>
         <Row>
           <Col md={12}>
             {children}
