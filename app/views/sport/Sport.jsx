@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { List } from 'immutable';
 import { Row, Col, Button } from 'react-bootstrap';
-import PlayerSelection from '../../components/PlayerSelection';
+import PlayerSelection from './PlayerSelection';
 import PageHeader from '../../components/PageHeader';
 import SportGroups from '../../components/SportGroups';
 
@@ -30,7 +30,6 @@ class Sport extends Component {
     const sport = props.params.path;
     const sportGroups = groups.filter(group => group.get('sport').get('name') === sport);
     const grouplessPlayers = players.filter(player => sportGroups.filter(group => group.get('playerIds').includes(player.get('id'))));
-
     return (
       <div>
         <Row>
@@ -40,7 +39,7 @@ class Sport extends Component {
         </Row>
         <Row>
           <Col md={4}>
-            <PlayerSelection players={grouplessPlayers} sportName={sport} />
+            <PlayerSelection players={grouplessPlayers} sport={sport} />
           </Col>
           <Col md={6}>
             <Button onClick={e => this.groupCreation(sport, players, e)}>
