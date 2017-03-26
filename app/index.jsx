@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { fromJS, Map } from 'immutable';
+import { fromJS } from 'immutable';
 import Root from './containers/Root';
 import configureStore from './store/configureStore';
 import storage from './libs/storage';
@@ -14,8 +14,8 @@ function serialize(state) {
 }
 
 function deserialize(state) {
-  const deserializedState = Map();
-  Object.keys(state || {}).forEach(k => deserializedState.set(k, fromJS(state[k])));
+  const deserializedState = fromJS(state);
+  // Object.keys(state || {}).forEach(k => deserializedState.set(k, fromJS(state[k])));
 
   return deserializedState;
 }
