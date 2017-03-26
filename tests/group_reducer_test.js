@@ -1,7 +1,6 @@
 import assert from 'assert';
-import {Map} from 'immutable';
-import * as types from 'app/actions/groups';
-import reducer from 'app/reducers/groups';
+import * as types from '../app/actions/groups';
+import reducer from '../app/reducers/groups';
 
 describe('GroupReducer', () => {
   it('should return the initial state', () => {
@@ -12,12 +11,15 @@ describe('GroupReducer', () => {
     const group = {
       id: 'blaa',
       sport: 'golf',
-      playerIds: []
+      playerIds: [],
     };
-    assert.deepEqual(reducer(undefined, {
-      type: types.CREATE_GROUP,
-      group: group
-    }).toJS(), [group]);
+    assert.deepEqual(
+      reducer(undefined, {
+        type: types.CREATE_GROUP,
+        group: group,
+      }).toJS(),
+      [group],
+    );
   });
 
   it('should create a group with player ids', () => {
@@ -26,30 +28,33 @@ describe('GroupReducer', () => {
     const group = {
       id: 'blaa',
       sport: 'golf',
-      playerIds: [playerId1, playerId2]
+      playerIds: [playerId1, playerId2],
     };
 
-    assert.deepEqual(reducer(undefined, {
-      type: types.CREATE_GROUP,
-      group: group
-    }).toJS(), [group]);
+    assert.deepEqual(
+      reducer(undefined, {
+        type: types.CREATE_GROUP,
+        group: group,
+      }).toJS(),
+      [group],
+    );
   });
 
   it('should delete group', () => {
     const group = {
       id: 'blaa',
       sport: 'golf',
-      playerIds: []
+      playerIds: [],
     };
 
     const groups = reducer(undefined, {
       type: types.CREATE_GROUP,
-      group: group
+      group: group,
     });
 
     const state = reducer(groups, {
       type: types.DELETE_GROUP,
-      id: group.id
+      id: group.id,
     });
 
     assert.equal(state.count(), 0);

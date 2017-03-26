@@ -1,7 +1,7 @@
 import assert from 'assert';
-import {Map} from 'immutable';
-import * as types from 'app/actions/players';
-import reducer from 'app/reducers/players';
+import { Map } from 'immutable';
+import * as types from '../app/actions/players';
+import reducer from '../app/reducers/players';
 
 describe('PlayerReducer', () => {
   it('should return the initial state', () => {
@@ -12,29 +12,32 @@ describe('PlayerReducer', () => {
     const player = {
       id: 'blaa',
       name: 'Mikko',
-      shots: 0
+      shots: 0,
     };
-    assert.deepEqual(reducer(undefined, {
-      type: types.CREATE_PLAYER,
-      player: player
-    }).toJS(), [player]);
+    assert.deepEqual(
+      reducer(undefined, {
+        type: types.CREATE_PLAYER,
+        player: player,
+      }).toJS(),
+      [player],
+    );
   });
 
   it('should delete players', () => {
     const player = {
       id: 'blaa',
       name: 'Mikko',
-      shots: 0
+      shots: 0,
     };
 
     const players = reducer(undefined, {
       type: types.CREATE_PLAYER,
-      player: player
+      player: player,
     });
 
     const state = reducer(players, {
       type: types.DELETE_PLAYER,
-      id: player.id
+      id: player.id,
     });
 
     assert.equal(state.count(), 0);
@@ -44,17 +47,17 @@ describe('PlayerReducer', () => {
     const player = {
       id: 'blaa',
       name: 'Mikko',
-      shots: 0
+      shots: 0,
     };
 
     const players = reducer(undefined, {
       type: types.CREATE_PLAYER,
-      player: player
+      player: player,
     });
 
     const state = reducer(players, {
       type: types.DELETE_PLAYER,
-      id: player.id + player.id
+      id: player.id + player.id,
     });
 
     assert.equal(state.count(), 1);
@@ -66,12 +69,12 @@ describe('PlayerReducer', () => {
     const player = {
       id: 'blaa',
       name: 'Mikko',
-      shots: 0
+      shots: 0,
     };
 
     const players = reducer(undefined, {
       type: types.CREATE_PLAYER,
-      player: player
+      player: player,
     });
 
     const newShotsCount = 1;
@@ -79,7 +82,7 @@ describe('PlayerReducer', () => {
     const state = reducer(players, {
       type: types.UPDATE_PLAYER,
       id: player.id,
-      shots: newShotsCount
+      shots: newShotsCount,
     });
 
     assert.equal(state.get(0).get('shots'), newShotsCount);
@@ -89,12 +92,12 @@ describe('PlayerReducer', () => {
     const player = {
       id: 'blaa',
       name: 'Mikko',
-      shots: 3
+      shots: 3,
     };
 
     const players = reducer(undefined, {
       type: types.CREATE_PLAYER,
-      player: player
+      player: player,
     });
 
     const newShotsCount = 2;
@@ -102,7 +105,7 @@ describe('PlayerReducer', () => {
     const state = reducer(players, {
       type: types.UPDATE_PLAYER,
       id: player.id,
-      shots: newShotsCount
+      shots: newShotsCount,
     });
 
     assert.equal(state.get(0).get('shots'), newShotsCount);
@@ -111,12 +114,12 @@ describe('PlayerReducer', () => {
     const player = {
       id: 'blaa',
       name: 'Mikko',
-      sports: Map()
+      sports: Map(),
     };
 
     const players = reducer(undefined, {
       type: types.CREATE_PLAYER,
-      player: player
+      player: player,
     });
 
     const sportName = 'golf';
@@ -126,8 +129,8 @@ describe('PlayerReducer', () => {
       player: {
         id: player.id,
         sport: sportName,
-        preSelectedToGroup: preSelectedToGroup
-      }
+        preSelectedToGroup: preSelectedToGroup,
+      },
     });
 
     assert.equal(state.get(0).get('sports').get(sportName).get('preSelectedToGroup'), preSelectedToGroup);
@@ -138,14 +141,13 @@ describe('PlayerReducer', () => {
     const player = {
       id: 'blaa',
       name: 'Mikko',
-      sports: Map().setIn([sportName, selectionKey], true)
+      sports: Map().setIn([sportName, selectionKey], true),
     };
 
     const players = reducer(undefined, {
       type: types.CREATE_PLAYER,
-      player: player
+      player: player,
     });
-
 
     const preSelectedToGroup = false;
     const state = reducer(players, {
@@ -153,8 +155,8 @@ describe('PlayerReducer', () => {
       player: {
         id: player.id,
         sport: sportName,
-        preSelectedToGroup: preSelectedToGroup
-      }
+        preSelectedToGroup: preSelectedToGroup,
+      },
     });
 
     assert.equal(state.get(0).get('sports').get(sportName).get(selectionKey), preSelectedToGroup);
