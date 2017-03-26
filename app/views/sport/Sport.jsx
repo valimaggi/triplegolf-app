@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import { List, Map } from 'immutable';
-import { Row, Col, ListGroupItem, Button, Glyphicon } from 'react-bootstrap';
+import { List } from 'immutable';
+import { Row, Col, Button } from 'react-bootstrap';
 import PlayerSelection from '../../components/PlayerSelection';
 import PageHeader from '../../components/PageHeader';
 import SportGroups from '../../components/SportGroups';
@@ -33,20 +33,22 @@ class Sport extends Component {
 
     return (
       <div>
-        <div style={{ width: '100%', float: 'left' }}>
-          <PageHeader header={sport} />
-        </div>
-        <div style={{ width: '30%', float: 'left' }}>
-          <PlayerSelection players={grouplessPlayers} sportName={sport} />
-        </div>
-        <div style={{ float: 'left' }}>
-          <button onClick={e => this.groupCreation(sport, players, e)}>
-            Create group
-          </button>
-        </div>
-        <div style={{ float: 'left', marginLeft: '5%' }}>
-          <SportGroups groups={sportGroups} players={players} />
-        </div>
+        <Row>
+          <Col md={12}>
+            <PageHeader header={sport} />
+          </Col>
+        </Row>
+        <Row>
+          <Col md={4}>
+            <PlayerSelection players={grouplessPlayers} sportName={sport} />
+          </Col>
+          <Col md={6}>
+            <Button onClick={e => this.groupCreation(sport, players, e)}>
+              Create group
+            </Button>
+            <SportGroups groups={sportGroups} players={players} />
+          </Col>
+        </Row>
       </div>
     );
   }
@@ -55,7 +57,6 @@ class Sport extends Component {
 Sport.propTypes = {
   players: PropTypes.instanceOf(List).isRequired,
   groups: PropTypes.instanceOf(List).isRequired,
-  sport: PropTypes.instanceOf(Map).isRequired,
   createGroup: PropTypes.func.isRequired,
   createHoles: PropTypes.func.isRequired,
 };
