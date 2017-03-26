@@ -8,31 +8,19 @@ const RadiumLink = Radium(Link);
 const activeLinkStyle = {
   color: '#90EE90',
   display: 'block',
-  outline: 'none'
+  outline: 'none',
 };
 const Nav = () => (
   <div>
-    <Menu>
+    <Menu isOpen={false}>
       <RadiumLink className="menu-item" to="/">Home</RadiumLink>
-      <RadiumLink
-        className="menu-item"
-        activeStyle={activeLinkStyle}
-        to="/golf"
-      >
+      <RadiumLink className="menu-item" activeStyle={activeLinkStyle} to="/golf">
         Golf
       </RadiumLink>
-      <RadiumLink
-        className="menu-item"
-        activeStyle={activeLinkStyle}
-        to="/discgolf"
-      >
+      <RadiumLink className="menu-item" activeStyle={activeLinkStyle} to="/discgolf">
         Discgolf
       </RadiumLink>
-      <RadiumLink
-        className="menu-item"
-        activeStyle={activeLinkStyle}
-        to="/minigolf"
-      >
+      <RadiumLink className="menu-item" activeStyle={activeLinkStyle} to="/minigolf">
         Minigolf
       </RadiumLink>
     </Menu>
@@ -57,7 +45,7 @@ const App = ({ children }) => (
 );
 
 App.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 export default App;
