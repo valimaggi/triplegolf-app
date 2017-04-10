@@ -1,10 +1,10 @@
 // Reference: http://karma-runner.github.io/0.13/config/configuration-file.html
-module.exports = function karmaConfig (config) {
+module.exports = function karmaConfig(config) {
   config.set({
     frameworks: [
       // Reference: https://github.com/karma-runner/karma-mocha
       // Set framework to mocha
-      'mocha'
+      'mocha',
     ],
 
     reporters: [
@@ -14,7 +14,7 @@ module.exports = function karmaConfig (config) {
 
       // Reference: https://github.com/karma-runner/karma-coverage
       // Output code coverage files
-      'coverage'
+      'coverage',
     ],
 
     files: [
@@ -23,19 +23,19 @@ module.exports = function karmaConfig (config) {
       'node_modules/phantomjs-polyfill/bind-polyfill.js',
 
       // Grab all files in the tests directory that contain _test.
-      'tests/**/*_test.*'
+      'tests/**/*_test.*',
     ],
 
     preprocessors: {
       // Reference: http://webpack.github.io/docs/testing.html
       // Reference: https://github.com/webpack/karma-webpack
       // Convert files with webpack and load sourcemaps
-      'tests/**/*_test.*': ['webpack', 'sourcemap']
+      'tests/**/*_test.*': ['webpack', 'sourcemap'],
     },
 
     browsers: [
       // Run tests using PhantomJS
-      'PhantomJS'
+      'PhantomJS',
     ],
 
     singleRun: true,
@@ -43,7 +43,7 @@ module.exports = function karmaConfig (config) {
     // Configure code coverage reporter
     coverageReporter: {
       dir: 'build/coverage/',
-      type: 'html'
+      type: 'html',
     },
 
     // Test webpack config
@@ -51,8 +51,7 @@ module.exports = function karmaConfig (config) {
 
     // Hide webpack build information from output
     webpackMiddleware: {
-      noInfo: true
-    }
+      noInfo: true,
+    },
   });
 };
-
