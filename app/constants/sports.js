@@ -1,14 +1,3 @@
-export default {
-  GOLF: {
-    name: 'golf',
-    header: 'Golf',
-  },
-  DISCGOLF: {
-    name: 'discgolf',
-    header: 'Discgolf',
-  },
-  MINIGOLF: {
-    name: 'minigolf',
-    header: 'Minigolf',
-  },
-};
+export const GOLF = 'golf';
+export const DISCGOLF = 'discgolf';
+export const MINIGOLF = 'minigolf';

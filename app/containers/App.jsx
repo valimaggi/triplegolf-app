@@ -3,6 +3,8 @@ import { Link } from 'react-router';
 import { slide as Menu } from 'react-burger-menu';
 import Radium from 'radium';
 import { Row, Col } from 'react-bootstrap';
+import { GOLF, DISCGOLF, MINIGOLF } from '../constants/sports';
+import { createPath } from '../util/helpers';
 
 const RadiumLink = Radium(Link);
 const activeLinkStyle = {
@@ -14,13 +16,13 @@ const Nav = () => (
   <div>
     <Menu isOpen={false}>
       <RadiumLink className="menu-item" to="/">Home</RadiumLink>
-      <RadiumLink className="menu-item" activeStyle={activeLinkStyle} to="/golf">
+      <RadiumLink className="menu-item" activeStyle={activeLinkStyle} to={createPath(GOLF)}>
         Golf
       </RadiumLink>
-      <RadiumLink className="menu-item" activeStyle={activeLinkStyle} to="/discgolf">
+      <RadiumLink className="menu-item" activeStyle={activeLinkStyle} to={createPath(DISCGOLF)}>
         Discgolf
       </RadiumLink>
-      <RadiumLink className="menu-item" activeStyle={activeLinkStyle} to="/minigolf">
+      <RadiumLink className="menu-item" activeStyle={activeLinkStyle} to={createPath(MINIGOLF)}>
         Minigolf
       </RadiumLink>
     </Menu>
