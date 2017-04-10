@@ -10,13 +10,13 @@ export default function players(state = initialState, action) {
     case types.CREATE_PLAYER:
       return state.push(Map(action.player));
     case types.UPDATE_PLAYER: {
-      playerIndex = state.findIndex(player => player.get('id') === action.id);
+      playerIndex = state.findIndex(player => player.get('id') === action.player.id);
 
       if (playerIndex < 0) {
         return state;
       }
 
-      const { ...updatedPlayer } = action;
+      const { ...updatedPlayer } = action.player;
       return state.mergeIn([playerIndex], updatedPlayer);
     }
     case types.DELETE_PLAYER: {

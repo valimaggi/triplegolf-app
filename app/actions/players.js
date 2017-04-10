@@ -15,7 +15,9 @@ export const UPDATE_PLAYER = 'UPDATE_PLAYER';
 export function updatePlayer(updatedPlayer) {
   return {
     type: UPDATE_PLAYER,
-    ...updatedPlayer
+    player: {
+      ...updatedPlayer
+    }
   };
 }
 

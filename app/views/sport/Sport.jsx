@@ -16,19 +16,14 @@ class Sport extends Component {
     this.setState(togglePreSelectToGroup(playerId));
   }
 
-  createGroup(sport, players, e) {
+  createGroup(sport, e) {
     e.stopPropagation();
-    const selectedPlayers = players.filter(player =>
-      player.get('sports').get(sport) !== undefined && player.get('sports').get(sport).get('preSelectedToGroup'),
+
+    this.state.preSelectedPlayerIds.forEach(playerId =>
+      this.props.createHoles(playerId, sport, List())
     );
-    const selectedPlayerIds = selectedPlayers.map(player => player.get('id'));
 
-    selectedPlayerIds.forEach((playerId) => {
-      this.props.createHoles(playerId, sport, List());
-    });
-
-    this.props.createGroup({ sport: sport, playerIds: selectedPlayerIds, currentHoleIndex: 0 });
-    // selectedPlayerIds.map(playerId => this.props.switchGroupPreselection(playerId, sport.name, false));
+    this.props.createGroup({ sport: sport, playerIds: this.state.preSelectedPlayerIds, currentHoleIndex: 0 });
   }
 
   render() {
@@ -56,7 +51,7 @@ class Sport extends Component {
             />
           </Col>
           <Col md={6}>
-            <Button onClick={e => this.createGroup(sport, players, e)}>
+            <Button onClick={e => this.createGroup(sport, e)}>
               Create group
             </Button>
             <SportGroups groups={sportGroups} players={players} />
