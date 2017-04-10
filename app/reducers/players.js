@@ -28,24 +28,6 @@ export default function players(state = initialState, action) {
 
       return state.delete(playerIndex);
     }
-    case types.SWITCH_GROUP_PRESELECTION: {
-      playerIndex = state.findIndex(player => player.get('id') === action.player.id);
-
-      if (playerIndex < 0) {
-        return state;
-      }
-
-      return state.setIn([playerIndex, 'sports', action.player.sport, 'preSelectedToGroup'], action.player.preSelectedToGroup);
-    }
-    case types.CREATE_HOLES: {
-      playerIndex = state.findIndex(player => player.get('id') === action.player.id);
-
-      if (playerIndex < 0) {
-        return state;
-      }
-
-      return state.setIn([playerIndex, 'sports', action.player.sport, 'holes'], action.player.holes);
-    }
     default:
       return state;
   }

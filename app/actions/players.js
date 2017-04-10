@@ -28,27 +28,3 @@ export function deletePlayer(id) {
     id
   };
 }
-
-export const SWITCH_GROUP_PRESELECTION = 'SWITCH_GROUP_PRESELECTION';
-export function switchGroupPreselection(playerId, sport, preSelectedToGroup) {
-  return {
-    type: SWITCH_GROUP_PRESELECTION,
-    player: {
-      id: playerId,
-      sport: sport,
-      preSelectedToGroup: preSelectedToGroup
-    }
-  };
-}
-
-export const CREATE_HOLES = 'CREATE_HOLES';
-export function createHoles(playerId, sport, holes) {
-  return {
-    type: CREATE_HOLES,
-    player: {
-      id: playerId,
-      sport: sport,
-      holes: holes
-    }
-  };
-}

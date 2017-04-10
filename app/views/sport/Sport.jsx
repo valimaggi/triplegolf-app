@@ -18,12 +18,7 @@ class Sport extends Component {
 
   createGroup(sport, e) {
     e.stopPropagation();
-
-    this.state.preSelectedPlayerIds.forEach(playerId =>
-      this.props.createHoles(playerId, sport, List())
-    );
-
-    this.props.createGroup({ sport: sport, playerIds: this.state.preSelectedPlayerIds, currentHoleIndex: 0 });
+    this.props.createGroup({ sport: sport, playerIds: this.state.preSelectedPlayerIds });
   }
 
   render() {

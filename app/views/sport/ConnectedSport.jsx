@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import Sport from './Sport';
-import { createGroup as createGroupAction } from '../../actions/groups';
-import { createHoles as createHolesAction } from '../../actions/players';
+import { createGroup } from '../../actions/groups';
 
 const mapStateToProps = state => ({
   players: state.get('playersData'),
@@ -9,12 +8,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  createGroup(player) {
-    dispatch(createGroupAction(player));
-  },
-  createHoles(updatedPlayer) {
-    dispatch(createHolesAction(updatedPlayer));
-  },
+  createGroup(group) {
+    dispatch(createGroup(group));
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Sport);
