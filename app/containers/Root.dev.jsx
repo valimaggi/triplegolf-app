@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react';
 import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import App from './App';
-import DevTools from './DevTools';
 import Home from '../views/home/ConnectedHome';
 import Group from '../components/Group';
 import Sport from '../views/sport/ConnectedSport';
@@ -19,7 +18,6 @@ const Root = ({ store }) => (
           <Route path="group/:id" component={Group} />
         </Route>
       </Router>
-      <DevTools />
     </div>
   </Provider>
 );
