@@ -195,13 +195,6 @@ if (TARGET === 'test' || TARGET === 'tdd') {
       }
     },
     module: {
-      preLoaders: [
-        {
-          test: /\.jsx?$/,
-          loaders: ['isparta-instrumenter'],
-          include: PATHS.app
-        }
-      ],
       loaders: [
         {
           test: /\.jsx?$/,
