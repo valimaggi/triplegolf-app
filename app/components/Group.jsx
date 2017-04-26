@@ -1,7 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {compose} from 'redux';
 import {connect} from 'react-redux';
-import PlayerBox from './PlayerBox.jsx';
 import * as groupActions from '../actions/groups';
 import {updatePlayer} from '../actions/players';
 import holes from '../constants/holes';
@@ -50,7 +50,6 @@ class Group extends React.Component {
           {groupPlayers.map(player =>
             <div key={player.get('id')}>
               <div key={player.get('id')} style={playerBoxStyle}>
-                <PlayerBox key={player.get('id')} name={player.get('name')} shots={player.get('shots')} />
               </div>
               <div style={{display: 'inline-block'}}>
                 <button onClick={() => props.updatePlayer({id: player.get('id'), shots: player.get('shots')-1})}>-</button>
