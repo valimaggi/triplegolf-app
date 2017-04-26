@@ -13,6 +13,10 @@ class Sport extends Component {
     this.state = { preSelectedPlayerIds: [] };
   }
 
+  componentWillReceiveProps() {
+    this.setState(() => ({ preSelectedPlayerIds: [] }));
+  }
+
   togglePreSelectToGroup(playerId) {
     this.setState(togglePreSelectToGroup(playerId));
   }
