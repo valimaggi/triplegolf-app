@@ -3,8 +3,9 @@ import { List } from 'immutable';
 import { Row, Col, Button } from 'react-bootstrap';
 import PlayerSelection from './PlayerSelection';
 import PageHeader from '../../components/PageHeader';
-import SportGroups from '../../components/SportGroups';
+import SportGroups from './SportGroups';
 import { togglePreSelectToGroup } from './stateChanges';
+import { grouplessPlayersOfSport } from '../../util/helpers';
 
 class Sport extends Component {
   constructor(props) {
@@ -24,12 +25,8 @@ class Sport extends Component {
   render() {
     const { players, groups, ...props } = this.props;
     const sport = props.params.path;
-    const sportGroups = groups.filter(group => group.get('sport').get('name') === sport);
-    const grouplessPlayers = players.filter(player =>
-      sportGroups.filter(group =>
-        group.get('playerIds').includes(player.get('id'))
-      )
-    );
+    const sportGroups = groups.filter(group => group.get('sport') === sport);
+    const grouplessPlayers = grouplessPlayersOfSport(players, sportGroups);
     return (
       <div>
         <Row>
@@ -60,8 +57,7 @@ class Sport extends Component {
 Sport.propTypes = {
   players: PropTypes.instanceOf(List).isRequired,
   groups: PropTypes.instanceOf(List).isRequired,
-  createGroup: PropTypes.func.isRequired,
-  createHoles: PropTypes.func.isRequired,
+  createGroup: PropTypes.func.isRequired
 };
 
 export default Sport;

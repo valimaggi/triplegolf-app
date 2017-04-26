@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import Immutable from 'immutable';
+import { Map } from 'immutable';
 import { Row, Col, ListGroupItem, Button, Glyphicon } from 'react-bootstrap';
-
 import Editable from './Editable';
 
 class Player extends Component {
@@ -15,9 +14,11 @@ class Player extends Component {
   }
 
   render() {
-    const { player, updatePlayer, deletePlayer } = this.props;
+    const { player, updatePlayer, deletePlayer, isNameOnly } = this.props;
     const id = player.get('id');
     const playerShots = player.get('shots');
+    const updateable = !isNameOnly && updatePlayer;
+    const deletable = !isNameOnly && deletePlayer;
 
     return (
       <ListGroupItem>
@@ -25,7 +26,7 @@ class Player extends Component {
           <Col
             md={10}
             onClick={() => {
-              if (updatePlayer) {
+              if (updateable) {
                 this.toggleEditing(true);
               }
             }}
@@ -34,7 +35,7 @@ class Player extends Component {
               editing={this.state.editing}
               value={player.get('name')}
               onEdit={(name) => {
-                if (updatePlayer) {
+                if (updateable) {
                   updatePlayer({ id, name });
                   this.toggleEditing(false);
                 }
@@ -42,22 +43,25 @@ class Player extends Component {
             />
           </Col>
           <Col md={2}>
-            {deletePlayer &&
+            {deletable &&
               <Button bsSize="xsmall">
                 <Glyphicon glyph="remove" onClick={() => deletePlayer(id)} />
               </Button>}
           </Col>
         </Row>
-        <Row><Col md={12}>Shots: {playerShots}</Col></Row>
+        {!isNameOnly &&
+          <Row><Col md={12}>Shots: {playerShots}</Col></Row>
+        }
       </ListGroupItem>
     );
   }
 }
 
 Player.propTypes = {
-  player: PropTypes.instanceOf(Immutable.Map).isRequired,
+  player: PropTypes.instanceOf(Map).isRequired,
   updatePlayer: PropTypes.func,
   deletePlayer: PropTypes.func,
+  isNameOnly: PropTypes.bool
 };
 
 export default Player;

@@ -1,7 +1,8 @@
 import React, { PropTypes } from 'react';
 import { Row, Col, Button } from 'react-bootstrap';
 import { Map, List } from 'immutable';
-import Players from '../../components/Players';
+import ListableItems from '../../components/ListableItems';
+import Players from './Players';
 
 const Home = ({ players, createPlayer, updatePlayer, deletePlayer }) => (
   <div>
@@ -20,7 +21,9 @@ const Home = ({ players, createPlayer, updatePlayer, deletePlayer }) => (
     <Row>
       <Col md={6}>
         <br />
-        <Players players={players} updatePlayer={updatePlayer} deletePlayer={deletePlayer} />
+        <ListableItems colWidthMd={6}>
+          <Players players={players} updatePlayer={updatePlayer} deletePlayer={deletePlayer} />
+        </ListableItems>
       </Col>
     </Row>
   </div>
