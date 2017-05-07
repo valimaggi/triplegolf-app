@@ -22,7 +22,7 @@ const Home = ({ players, createPlayer, updatePlayer, deletePlayer }) => (
     <Row>
       <Col md={6}>
         <br />
-        <ListableItems colWidthMd={6}>
+        <ListableItems colWidthMd={4}>
           <Players players={players} updatePlayer={updatePlayer} deletePlayer={deletePlayer} />
         </ListableItems>
       </Col>
