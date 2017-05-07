@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Home from './Home';
-import { createPlayer as createPlayerAction, updatePlayer as updatePlayerAction, deletePlayer as deletePlayerAction } from '../../actions/players';
+import { createPlayer, updatePlayer, deletePlayer } from '../../actions/players';
 
 const mapStateToProps = state => ({
   players: state.get('playersData'),
@@ -8,13 +8,13 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   createPlayer(player) {
-    dispatch(createPlayerAction(player));
+    dispatch(createPlayer(player));
   },
   updatePlayer(updatedPlayer) {
-    dispatch(updatePlayerAction(updatedPlayer));
+    dispatch(updatePlayer(updatedPlayer));
   },
   deletePlayer(id) {
-    dispatch(deletePlayerAction(id));
+    dispatch(deletePlayer(id));
   },
 });
 
