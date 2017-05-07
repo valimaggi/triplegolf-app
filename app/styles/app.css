@@ -2,7 +2,3 @@ body {
   background: honeydew;
   font-family: sans-serif;
 }
-
-.player-delete {
-  cursor: pointer;
-}
