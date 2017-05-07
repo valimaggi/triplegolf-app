@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { List } from 'immutable';
 import { Row, Col, Button } from 'react-bootstrap';
+import isEmpty from 'lodash/isEmpty';
 import PlayerSelection from './PlayerSelection';
 import PageHeader from '../../components/PageHeader';
 import SportGroups from './SportGroups';
@@ -40,17 +41,20 @@ class Sport extends Component {
           </Col>
         </Row>
         <Row>
-          <Col md={4}>
+          <Col md={3}>
             <PlayerSelection
               players={grouplessPlayers}
               preSelectedPlayerIds={this.state.preSelectedPlayerIds}
               togglePreSelectToGroup={playerId => this.togglePreSelectToGroup(playerId)}
             />
           </Col>
-          <Col md={6}>
-            <Button onClick={e => this.createGroup(sport, e)}>
+          <Col md={2}>
+            <Button onClick={e => this.createGroup(sport, e)} disabled={isEmpty(this.state.preSelectedPlayerIds)}>
               Create group
             </Button>
+          </Col>
+          <Col md={5}>
+            <h2>Groups</h2>
             <SportGroups groups={sportGroups} players={players} />
           </Col>
         </Row>

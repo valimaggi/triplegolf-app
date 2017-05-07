@@ -9,10 +9,10 @@ const SelectablePlayer = ({ player, isSelected, togglePreSelectToGroup }) => {
   return (
     <div>
       <Row>
-        <Col xs={6} md={6}>
+        <Col xs={9} md={9}>
           <Player player={player} />
         </Col>
-        <Col xs={2} md={2}>
+        <Col xs={3} md={3}>
           <input className="select-player-to-group-checkbox" type="checkbox" checked={isSelected} onChange={() => togglePreSelectToGroup(playerId)} />
         </Col>
       </Row>

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import { Map, List } from 'immutable';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Button, Glyphicon } from 'react-bootstrap';
 import Player from '../../components/Player';
 
 class SportGroup extends React.Component {
@@ -23,7 +23,7 @@ class SportGroup extends React.Component {
           </Link>
         </Col>
         <Col>
-          <button onClick={() => this.deleteGroup(group)}>X</button>
+          <Button onClick={() => this.deleteGroup(group)}><Glyphicon glyph="remove" /></Button>
         </Col>
       </Row>
     );
