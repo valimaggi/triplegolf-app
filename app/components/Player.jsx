@@ -45,7 +45,7 @@ class Player extends Component {
           </Col>
           <Col md={2}>
             {deletable &&
-              <Button bsSize="small" bsStyle="danger" className="pull-right">
+              <Button bsSize="xsmall" bsStyle="danger" className="pull-right">
                 <Glyphicon glyph="remove" onClick={() => deletePlayer(id)} />
               </Button>}
           </Col>

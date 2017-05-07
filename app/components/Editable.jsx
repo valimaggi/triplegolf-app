@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Row, Col, FormControl, Glyphicon } from 'react-bootstrap';
 
 class Editable extends Component {
   finishEdit(e, onEdit) {
@@ -20,13 +21,17 @@ class Editable extends Component {
 
   renderEdit() {
     return (
-      <input
-        type="text"
-        autoFocus
-        defaultValue={this.props.value}
-        onBlur={e => this.finishEdit(e, this.props.onEdit)}
-        onKeyPress={e => this.checkEnter(e, this.props.onEdit)}
-      />
+      <Row>
+        <Col md={12}>
+          <FormControl
+            type="text"
+            autoFocus
+            defaultValue={this.props.value}
+            onBlur={e => this.finishEdit(e, this.props.onEdit)}
+            onKeyPress={e => this.checkEnter(e, this.props.onEdit)}
+          />
+        </Col>
+      </Row>
     );
   }
 
@@ -35,6 +40,7 @@ class Editable extends Component {
     return (
       <h4 className="list-group-item-heading">
         {editing ? this.renderEdit() : this.props.value}
+        &nbsp;{!editing && <Glyphicon bsClass="glyphicon glyphicon-pencil smaller-glyphicon" glyph="pencil" />}
       </h4>
     );
   }
