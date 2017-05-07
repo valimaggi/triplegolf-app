@@ -41,6 +41,10 @@ class Sport extends Component {
           </Col>
         </Row>
         <Row>
+          <Col md={4}>
+            <h2>Groups</h2>
+            <SportGroups groups={sportGroups} players={players} deleteGroup={deleteGroup} />
+          </Col>
           <Col md={3}>
             <PlayerSelection
               players={grouplessPlayers}
@@ -52,10 +56,6 @@ class Sport extends Component {
             <Button onClick={e => this.createGroup(sport, e)} disabled={isEmpty(this.state.preSelectedPlayerIds)}>
               Create group
             </Button>
-          </Col>
-          <Col md={5}>
-            <h2>Groups</h2>
-            <SportGroups groups={sportGroups} players={players} deleteGroup={deleteGroup} />
           </Col>
         </Row>
       </div>

@@ -19,10 +19,10 @@ class SportGroup extends React.Component {
 
     return (
       <Row>
-        <Col md={4}>
+        <Col md={5}>
           <Link className="group-link" to={'/group/' + group.get('id')} >
             {groupPlayers.map(player =>
-              <Player key={player.get('id')} player={player} isNameOnly />
+              <Player key={player.get('id')} player={player} />
             )}
           </Link>
         </Col>
