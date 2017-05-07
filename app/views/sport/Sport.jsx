@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { List } from 'immutable';
-import { Row, Col, Button } from 'react-bootstrap';
+import { Row, Col, Button, Glyphicon } from 'react-bootstrap';
 import isEmpty from 'lodash/isEmpty';
 import PlayerSelection from './PlayerSelection';
 import PageHeader from '../../components/PageHeader';
@@ -54,7 +54,7 @@ class Sport extends Component {
           </Col>
           <Col md={2}>
             <Button onClick={e => this.createGroup(sport, e)} disabled={isEmpty(this.state.preSelectedPlayerIds)}>
-              Create group
+              Create group &nbsp; <Glyphicon glyph="plus" />
             </Button>
           </Col>
         </Row>
