@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import { Row, Col, Button, Glyphicon } from 'react-bootstrap';
 import { Map, List } from 'immutable';
 import ListableItems from '../../components/ListableItems';
+import PageHeader from '../../components/PageHeader';
 import Players from './Players';
 
 const Home = ({ players, createPlayer, updatePlayer, deletePlayer }) => (
   <div>
     <Row>
       <Col md={6}>
-        Pick a sport from the navigation or create a new player.
+        <PageHeader header="Triple golf" />
       </Col>
     </Row>
     <Row>
