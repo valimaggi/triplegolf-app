@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { capitalize } from '../util/helpers';
 
 const PageHeader = ({ header }) =>
   <h1>
-    {header && header.replace(/\b\w/g, l => l.toUpperCase())}
+    {header && capitalize(header)}
   </h1>;
 
 PageHeader.propTypes = {
