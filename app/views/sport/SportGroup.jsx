@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import { Map, List } from 'immutable';
-import { Row, Col, Button, Glyphicon } from 'react-bootstrap';
+import { Panel, Row, Col, Button, Glyphicon } from 'react-bootstrap';
 import Player from '../../components/Player';
 
 class SportGroup extends React.Component {
@@ -16,20 +16,34 @@ class SportGroup extends React.Component {
     const groupPlayers = players.filter(player =>
       group.get('playerIds').findIndex(id => id === player.get('id')) >= 0
     );
+    const groupTitle = `Group ${group.get('id')}`;
 
     return (
-      <Row>
-        <Col md={6}>
-          <Link className="group-link" to={'/group/' + group.get('id')} >
+      <Panel header={groupTitle}>
+        <Row>
+          <Col md={6}>
             {groupPlayers.map(player =>
               <Player key={player.get('id')} player={player} />
             )}
-          </Link>
-        </Col>
-        <Col>
-          <Button onClick={() => this.deleteGroup(group.get('id'))}><Glyphicon glyph="remove" /></Button>
-        </Col>
-      </Row>
+          </Col>
+          <Col md={1}>
+            <Row>
+              <Col md={12}>
+                <Link to={'/group/' + group.get('id')} >
+                  <Button bsSize="large" bsStyle="success"><Glyphicon glyph="zoom-in" /></Button>
+                </Link>
+              </Col>
+            </Row>
+            <br />
+            <Row>
+              <Col md={12}>
+                <Button bsSize="large" bsStyle="danger" onClick={() => this.deleteGroup(group.get('id'))}><Glyphicon glyph="remove" /></Button>
+              </Col>
+            </Row>
+
+          </Col>
+        </Row>
+      </Panel>
     );
   }
 }

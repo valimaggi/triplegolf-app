@@ -1,5 +1,5 @@
-$background: #373a47;
-$menu-item-color: #bdc3c7;
+$background: honeydew;
+$menu-item-color: green;
 
 .bm-menu-wrap {
   width: 200px !important;
@@ -16,7 +16,7 @@ $menu-item-color: #bdc3c7;
 
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
-  background: $background;
+  background: $menu-item-color;
 }
 
 /* Position and sizing of clickable cross button */
@@ -44,7 +44,7 @@ $menu-item-color: #bdc3c7;
 
 /* Wrapper for item list */
 .bm-item-list {
-  color: #b8b7ad;
+  color: $background;
   padding: 0.8em;
 }
 
@@ -62,5 +62,6 @@ $menu-item-color: #bdc3c7;
 
 .menu-item:hover {
   text-decoration: none;
-  color: cornsilk;
+  color: $menu-item-color;
+  font-weight: bold;
 }

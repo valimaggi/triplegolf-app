@@ -6,8 +6,8 @@ import SportGroup from './SportGroup';
 const SportGroups = ({ groups, players, deleteGroup }) =>
   <div>
     {groups.map(group =>
-      <div>
-        <SportGroup key={group.get('id')} group={group} players={players} deleteGroup={deleteGroup} />
+      <div key={group.get('id')}>
+        <SportGroup group={group} players={players} deleteGroup={deleteGroup} />
         <br />
       </div>
     )}

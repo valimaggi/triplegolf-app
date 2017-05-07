@@ -9,9 +9,10 @@ import { createPath } from '../util/helpers';
 
 const RadiumLink = Radium(Link);
 const activeLinkStyle = {
-  color: '#90EE90',
+  color: 'black',
   display: 'block',
   outline: 'none',
+  fontWeight: 'bold'
 };
 const Nav = () => (
   <div>
