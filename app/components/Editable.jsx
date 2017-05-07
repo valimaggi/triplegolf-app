@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col, FormControl, Glyphicon } from 'react-bootstrap';
+import { Row, Col, FormControl } from 'react-bootstrap';
 
 class Editable extends Component {
-  finishEdit(e, onEdit) {
-    const value = e.target.value;
-
+  finishEdit(value, onEdit) {
     if (onEdit && value.trim()) {
       onEdit(value);
     }
@@ -14,7 +12,7 @@ class Editable extends Component {
 
   checkEnter(e, onEdit) {
     if (e.key === 'Enter') {
-      this.finishEdit(e, onEdit);
+      this.finishEdit(e.target.value, onEdit);
     }
     return true;
   }
@@ -27,7 +25,7 @@ class Editable extends Component {
             type="text"
             autoFocus
             defaultValue={this.props.value}
-            onBlur={e => this.finishEdit(e, this.props.onEdit)}
+            onBlur={e => this.finishEdit(e.target.value, this.props.onEdit)}
             onKeyPress={e => this.checkEnter(e, this.props.onEdit)}
           />
         </Col>
@@ -36,11 +34,11 @@ class Editable extends Component {
   }
 
   render() {
-    const { editing } = this.props;
+    const { editing, value, children } = this.props;
     return (
       <h4 className="list-group-item-heading">
-        {editing ? this.renderEdit() : this.props.value}
-        &nbsp;{!editing && <Glyphicon bsClass="glyphicon glyphicon-pencil smaller-glyphicon" glyph="pencil" />}
+        {editing ? this.renderEdit() : value}
+        &nbsp;{children}
       </h4>
     );
   }
@@ -50,6 +48,7 @@ Editable.propTypes = {
   value: PropTypes.string.isRequired,
   onEdit: PropTypes.func.isRequired,
   editing: PropTypes.bool.isRequired,
+  children: PropTypes.node
 };
 
 export default Editable;

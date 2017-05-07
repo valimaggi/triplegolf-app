@@ -41,7 +41,9 @@ class Player extends Component {
                   this.toggleEditing(false);
                 }
               }}
-            />
+            >
+              {updateable && <Glyphicon bsClass="glyphicon glyphicon-pencil smaller-glyphicon" glyph="pencil" />}
+            </Editable>
           </Col>
           <Col md={2}>
             {deletable &&

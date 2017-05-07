@@ -6,7 +6,7 @@ import SelectablePlayer from './SelectablePlayer';
 
 const PlayerSelection = ({ players, preSelectedPlayerIds, togglePreSelectToGroup }) => (
   <div>
-    <h2>Player selection</h2>
+    <h2>Select players for a group</h2>
     {players.map(player => (
       <SelectablePlayer
         key={player.get('id')}
