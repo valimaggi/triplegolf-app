@@ -1,5 +1,7 @@
+import { GOLF, DISCGOLF, MINIGOLF } from './sports';
+
 export default {
-  golf: {
+  [GOLF]: {
     1: 3,
     2: 3,
     3: 4,
@@ -7,7 +9,7 @@ export default {
     5: 3,
     6: 3,
   },
-  discgolf: {
+  [DISCGOLF]: {
     1: 4,
     2: 3,
     3: 4,
@@ -19,7 +21,7 @@ export default {
     9: 3,
     10: 3,
   },
-  minigolf: {
+  [MINIGOLF]: {
     1: 1,
     2: 1,
     3: 1,
