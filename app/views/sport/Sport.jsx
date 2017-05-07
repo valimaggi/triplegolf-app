@@ -29,7 +29,7 @@ class Sport extends Component {
   }
 
   render() {
-    const { players, groups, ...props } = this.props;
+    const { players, groups, deleteGroup, ...props } = this.props;
     const sport = props.params.path;
     const sportGroups = groups.filter(group => group.get('sport') === sport);
     const grouplessPlayers = grouplessPlayersOfSport(players, sportGroups);
@@ -55,7 +55,7 @@ class Sport extends Component {
           </Col>
           <Col md={5}>
             <h2>Groups</h2>
-            <SportGroups groups={sportGroups} players={players} />
+            <SportGroups groups={sportGroups} players={players} deleteGroup={deleteGroup} />
           </Col>
         </Row>
       </div>
@@ -66,7 +66,8 @@ class Sport extends Component {
 Sport.propTypes = {
   players: PropTypes.instanceOf(List).isRequired,
   groups: PropTypes.instanceOf(List).isRequired,
-  createGroup: PropTypes.func.isRequired
+  createGroup: PropTypes.func.isRequired,
+  deleteGroup: PropTypes.func.isRequired
 };
 
 export default Sport;

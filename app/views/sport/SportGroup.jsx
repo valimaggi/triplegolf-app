@@ -7,6 +7,10 @@ import Player from '../../components/Player';
 
 class SportGroup extends React.Component {
 
+  deleteGroup(id) {
+    this.props.deleteGroup(id);
+  }
+
   render() {
     const { group, players } = this.props;
     const groupPlayers = players.filter(player =>
@@ -23,7 +27,7 @@ class SportGroup extends React.Component {
           </Link>
         </Col>
         <Col>
-          <Button onClick={() => this.deleteGroup(group)}><Glyphicon glyph="remove" /></Button>
+          <Button onClick={() => this.deleteGroup(group.get('id'))}><Glyphicon glyph="remove" /></Button>
         </Col>
       </Row>
     );
@@ -33,6 +37,7 @@ class SportGroup extends React.Component {
 SportGroup.propTypes = {
   group: PropTypes.instanceOf(Map).isRequired,
   players: PropTypes.instanceOf(List).isRequired,
+  deleteGroup: PropTypes.func.isRequired
 };
 
 export default SportGroup;
