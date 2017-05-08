@@ -16,7 +16,8 @@ Template (structure, webpack confs, tests) is based on Juho Vepsäläinen's Surv
 1. Data model for players/groups to store all the shots by sport and by hole. Functionality to increase/decrease shots for players in the given sport and hole.
 2. Localizations (i18n)
 3. Project structure from 'folder-by-type' to 'folder-by-feature'
-4. Backed support instead of just webpack-dev-server development
+4. Practice React component testing with Jest for starters
+5. Backend support instead of just webpack-dev-server development
 
 ## Install
 
